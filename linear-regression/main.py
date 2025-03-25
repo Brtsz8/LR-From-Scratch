@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 data_train = pd.read_csv('train.csv')
 data_train = data_train.dropna()
 data_test = pd.read_csv('test.csv')
-
+data_test = data_test.dropna()
 #visualization of data
 #print(data_train)
 #plt.scatter(data_train.x, data_train.y)
@@ -44,7 +44,7 @@ def gradient(a,b,data_points,L):
 
 a=0
 b=0
-L=0.0001
+L=0.0001        #learning rate
 epochs = 2000
 
 for i in range(epochs):
@@ -54,6 +54,11 @@ for i in range(epochs):
         loss(a,b,data_train)
 
 print(a,b)
+
+#analyze the plot
 plt.scatter(data_train.x, data_train.y)
 plt.plot(list(range(0,100)), [a*x+b for x in range(0,100)], color="black")
 plt.show()
+
+#test 
+loss(a,b,data_test)
